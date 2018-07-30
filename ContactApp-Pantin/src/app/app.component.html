@@ -1,0 +1,39 @@
+<div class="container">
+  <header class="mb-4">
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand">
+          <!--
+            Avec l'expression {{ }} j'affiche
+            le contenu de ma variable.
+          -->
+          {{ title }}
+        </a>
+      </div>
+    </nav>
+  </header>
+  <div class="row">
+    <div class="col-sm-4">
+      <!--{{ unContact.name + ' ' + unContact.username }}-->
+      <div class="list-group">
+        <a *ngFor="let contact of mesContacts"
+           [class.active]="contactActif === contact"
+           (click)="showContact(contact)"
+           href="javascript:void(0)"
+           class="list-group-item list-group-item-action">
+          {{ contact.name }}
+        </a>
+      </div>
+      <app-add (unContactEstCree)="addContactToArray($event)"></app-add>
+    </div>
+    <div class="col-sm-8">
+      <app-profil [contact]="contactActif"></app-profil>
+    </div>
+  </div>
+  <pre>
+    <!--{{ mesContacts | json }}-->
+  </pre>
+  <footer class="text-center">
+    Copyright &copy; 2018 - Le PoleS
+  </footer>
+</div>

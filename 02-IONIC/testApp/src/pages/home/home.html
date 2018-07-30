@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Instant Magique</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Pâtesserie Orientales</h3>
+
+  <ion-card *ngFor="let recette of recettes">
+    <img src="{{ '../../assets/imgs/app/' + recette.img }}"/>
+    <ion-card-content>
+      <ion-card-title (click)="afficherUneRecette()" >
+        {{ recette.nom }}
+      </ion-card-title>
+      <p [innerHTML]="recette.description"></p>
+      <p></p>
+
+      <ul>
+        <li *ngFor="let ingrediant of recette.ingredients">
+          {{ ingrediant.nom }} : {{ ingrediant.qte }}
+        </li>
+      </ul>
+
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>
